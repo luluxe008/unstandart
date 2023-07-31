@@ -1,6 +1,10 @@
 #ifndef __USTD_STRING_H__
 #define __USTD_STRING_H__
 
+/*
+	i used _CRT_SECURE_NO_WARNINGS to disable warning on Windows about the strcat and strcpy
+*/
+
 #include "memory.hpp"
 #include <cstring>
 
@@ -33,7 +37,7 @@ namespace ustd {
 			size = strlen(s);
 
 			char* tmp = new char[size + 1] {0}; //size+1 pour le \0
-			strcpy_s(tmp, size+1,s);
+			strcpy(tmp, s);
 			_str.reallocate((char*)tmp);
 		}
 
@@ -42,7 +46,7 @@ namespace ustd {
 		BasicString(const BasicString& s){ // copy, no ref
 			size = s.size;
 			char* tmp = new char[size + 1] {0};
-			strcpy_s(tmp, size+1, s.c_str());
+			strcpy(tmp, s.c_str());
 			_str.reallocate((char*)tmp);
 		}
 
@@ -53,8 +57,8 @@ namespace ustd {
 
 			size += strlen(s);
 			char* tmp = new char[size + 1] {0};
-			strcat_s(tmp, size+1,_str.get_ptr());
-			strcat_s(tmp, size + 1, s);
+			strcat(tmp, _str.get_ptr());
+			strcat(tmp, s);
 			_str.reallocate(tmp);
 		}
 
@@ -67,7 +71,7 @@ namespace ustd {
 				throw out_of_range_exception; // too big
 			}
 			char* tmp = new char[(b - a) + 1] {0};// the size of the 
-			strncpy_s(tmp, (b - a) + 1,_str.get_ptr() + a, b - a);
+			strncpy(tmp,_str.get_ptr() + a, b - a);
 
 			BasicString res(tmp);
 			return res;
@@ -78,13 +82,17 @@ namespace ustd {
 
 			size = strlen(s);
 			char* tmp = new char[size + 1] {0};
-			strcpy_s(tmp, size + 1, s);
+			strcpy(tmp, s);
 			_str.reallocate(tmp);
 
 		}
 
 		void operator=(const char* s) {
 			set(s);
+		}
+
+		void operator=(const ustd::BasicString& s) {
+			set(s.c_str());
 		}
 
 		char get(index i) const {
@@ -119,8 +127,5 @@ namespace ustd {
 		return !(a == b);
 	}
 };
-
-
-
 
 #endif // !__USTD_STRING_H__
