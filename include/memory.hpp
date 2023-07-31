@@ -158,6 +158,10 @@ namespace ustd {
 			return p_data; 
 		}
 
+		T* get_ptr() { // NOT SURE ABOUT THIS ##################  MAY BE UNSTABLE  ################## 
+			return p_data;
+		}
+
 		bool is_null() const{
 			return p_data == nullptr;
 		}

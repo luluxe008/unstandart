@@ -13,7 +13,7 @@ namespace ustd {
 		T arr[Size];
 
 	public:
-		Array(T r[Size]) : arr{  } {
+		Array(T r[Size]){
 			for (int i = 0; i < Size; i++) {
 				arr[i] = r[i];
 			}
@@ -25,6 +25,7 @@ namespace ustd {
 			}
 			return arr[i];
 		}
+
 		void set(index i, T v) {
 			if (i > Size-1) {
 				throw out_of_range_exception;

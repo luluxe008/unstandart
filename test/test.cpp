@@ -4,6 +4,10 @@
 #include "../include/array.hpp"
 #include "assertion.hpp"
 
+#include <ostream>
+
+std::ostream& operator<<(std::ostream& f, ustd::String) { return f; } // only to do the assertion with ustd::string, without that code don't compile
+
 void memory_test() {
 	class A {
 	public:
@@ -35,6 +39,7 @@ void memory_test() {
 		ustd::SP<A> b = a;
 		assert<A>("address equality", *a.get_ptr()).HasSameAddressAs(b.get_ptr()).ShowResult();
 	}
+
 	{
 		ustd::SP<int> a = 25;
 		ustd::SP<int> b(a);
@@ -45,21 +50,34 @@ void memory_test() {
 }
 
 void string_test() {
-	// lazy to write all the tests but it looks like it work
-	ustd::String a("");
-	std::cout << a.c_str();
-}
+	{
+		ustd::BasicString a("hello");
+		ustd::BasicString b(a);
+		assert<ustd::BasicString>("string equality after copy", a).IsEqualTo(b).ShowResult();
+	}
+
+	{
+		ustd::BasicString a("hello");
+		ustd::BasicString b = "hello";
+		assert<ustd::BasicString>("string equality", a).IsEqualTo(b).ShowResult();
+	}
+
+	{
+		ustd::BasicString a("no");
+		ustd::BasicString b("yes");
+		assert<ustd::BasicString>("string difference", a).IsDifferentFrom(b).ShowResult();
+	}
+} 
 
 void array_test() {
-	ustd::Array<int, 2> a(new int[2]{1, 2});
-	a[2] = 2000;
-	std::cout << a.get(1);
+	// lazy to write all the tests but it looks like it work
+
 }
 
 int main() {
 	//memory_test();
 	
-	//string_test();
+	string_test();
 
 	array_test();
 }

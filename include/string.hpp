@@ -87,11 +87,15 @@ namespace ustd {
 			set(s);
 		}
 
-		char get(index a) const {
-			if (a > size) {
+		char get(index i) const {
+			if (i > size) {
 				throw out_of_range_exception;
 			}
-			return *(_str.get_ptr() + a);
+			return *(_str.get_ptr() + i);
+		}
+		
+		char& operator[](int i) {
+			return *(_str.get_ptr()+i);
 		}
 
 		const char* c_str() const {
@@ -115,5 +119,8 @@ namespace ustd {
 		return !(a == b);
 	}
 };
+
+
+
 
 #endif // !__USTD_STRING_H__
