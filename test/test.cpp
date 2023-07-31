@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../include/memory.hpp"
 #include "../include/string.hpp"
+#include "../include/array.hpp"
 #include "assertion.hpp"
 
 void memory_test() {
@@ -49,8 +50,16 @@ void string_test() {
 	std::cout << a.c_str();
 }
 
+void array_test() {
+	ustd::Array<int, 2> a(new int[2]{1, 2});
+	a[2] = 2000;
+	std::cout << a.get(1);
+}
+
 int main() {
 	//memory_test();
 	
-	string_test();
+	//string_test();
+
+	array_test();
 }

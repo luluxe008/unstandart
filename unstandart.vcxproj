@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\array.hpp" />
     <ClInclude Include="include\exception.hpp" />
     <ClInclude Include="include\memory.hpp" />
     <ClInclude Include="include\string.hpp" />

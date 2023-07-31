@@ -27,9 +27,7 @@ namespace ustd {
 
 	} assert_exception;
 
-	void assert(bool expr) {
-		if (!expr) throw ustd::assert_exception;
-	}
+
 };
 
 #endif // !__USTD_EXCEPTION_H__
