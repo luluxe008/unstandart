@@ -2,7 +2,6 @@
 #define __USTD__ARRAY_H__
 #include "exception.hpp"
 
-
 namespace ustd {
 
 	typedef unsigned long long int index;
@@ -14,30 +13,25 @@ namespace ustd {
 
 	public:
 		Array(T r[Size]){
-			for (int i = 0; i < Size; i++) {
-				arr[i] = r[i];
-			}
+			copy_raw_list(arr, r, Size);
+		}
+		Array() : arr{} {
+
 		}
 
-		T& get(index i) {
+		T& at(index i) {
 			if (i > Size-1) {
 				throw out_of_range_exception;
 			}
 			return arr[i];
 		}
 
-		void set(index i, T v) {
-			if (i > Size-1) {
-				throw out_of_range_exception;
-			}
-			arr[i] = v;
+		void set(index i, const T& v) {
+			at(i) = v;
 		}
 
 		T& operator[](index i) {
-			if (i > Size-1) {
-				throw out_of_range_exception;
-			}
-			return arr[i];
+			return at(i);
 		}
 	};
 }

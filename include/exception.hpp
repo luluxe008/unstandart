@@ -5,28 +5,35 @@
 namespace ustd {
 	class Exception {
 
-	} exception;
+	} ;
+	extern Exception exception;
 
 	class AllocationFailed : public Exception {
 
-	} allocation_failed_exception;
+	};
+	extern AllocationFailed allocation_failed_exception;
+
+	extern AllocationFailed allocation_failed_exception;
 
 	class NullPointerReference : public Exception {
 
-	} null_pointer_exception;
+	} ;
+	extern NullPointerReference null_pointer_exception;
 
 	class OutOfRange : public Exception {
 
-	} out_of_range_exception;
+	} ;
+	extern OutOfRange out_of_range_exception;
 
 	class BadIndex : public Exception {
 
-	} bad_index_exception;
+	} ;
+	extern BadIndex bad_index_exception;
 
 	class Assert : public Exception {
 
-	} assert_exception;
-
+	} ;
+	extern Assert assert_exception;
 
 };
 

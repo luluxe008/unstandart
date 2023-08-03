@@ -1,15 +1,10 @@
-#include <iostream>
 #include "../include/memory.hpp"
-#include "../include/string.hpp"
-#include "../include/array.hpp"
-#include "../include/ostream.hpp"
-#include "../include/string_cout.hpp"
 #include "assertion.hpp"
-
-#include <ostream>
-
+#include "../include/vector.hpp"
+#include "../include/array.hpp";
 
 void memory_test() {
+	
 	class A {
 	public:
 		void my_func() {
@@ -48,6 +43,7 @@ void memory_test() {
 		assert<int>("address change due to reallocation", *a.get_ptr()).HasDifferentAddressAs(b.get_ptr()).ShowResult();
 		
 	}
+	
 }
 
 void string_test() {
@@ -63,10 +59,16 @@ void array_test() {
 int main() {
 	//memory_test();
 
-	ustd::Ostream c;
-	ustd::String a("hello");
-	c << a;
+
 	//string_test();
 
 	//array_test();
+	ustd::Vector<int> d;
+	d.push_back(250);
+	d.push_back(152);
+	d.push_front(100);
+	d.pop_front();
+	for (int i = 0; i < d.size(); i++) {
+		std::cout << d[i] << std::endl;
+	}
 }

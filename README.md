@@ -1,5 +1,6 @@
 
 
+
 # Unstandart
 
 Ce projet est un test pour voire si je peux récréer une bibliothèque standard en C++ uniquement à l'aide des bibliothèque standard du C. A cela s'ajoute un fichier "test/test.cpp" avec des test unitaire et un fichier "assertion.hpp". 
@@ -14,12 +15,15 @@ Toutes les classes du projet sont contenue dans le namespace "ustd".
 Les fichiers dans le dossier "test/" sont des tests et n'ont pas besoin d'être inclut.
 On essaie aussi de minimiser l'utilisation de l'héritage et des templates pour permettre une compilation plus rapide.
 ## Avancement du projet
-Actuellement il y a 3 fichier majeurs:
+Actuellement il y a 5 fichier majeurs:
 * exception.hpp - Contient toutes les exceptions qui peuvent survenir à l'exécution
 * memory.hpp - Contient une classe de pointeur intélligent pour éviter les fuite de mémoire. **INSTABLE**
 * string.hpp - Contient une classe pour pouvoir manipuler les chaines de caractères sans danger.
 * array.hpp - Contient une classe qui permet d'avoir une liste statique d'élément.
-
+* vector.hpp - Contient une classe qui permet d'avoir une liste dynamique d'élément.
+* ostream.hpp - Contient une class Ostream qui permet d'écrire dans la sortie standart ou dans un fichier (non testé mais théoriquement possible)
+* string_cout - Contient une fonction qui permet d'écrire les string avec Ostream.
+* 
 A l'avenir je prévois d'ajouter:
-* vector.hpp - une classe template pour pouvoir faire des liste dynamique sécuriser.
-* out - une classe pour pouvoir utiliser plus simplement la sortie standard (dans le même style que std::ostream)
+* Istream- pour pouvoir lire l'entré standart ou les fichiers
+* LinkedList/DoubleLinked/Stack/... - plein de conteneurs divers et varié. 

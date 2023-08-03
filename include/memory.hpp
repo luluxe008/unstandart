@@ -8,6 +8,17 @@
 namespace ustd {
 	
 	template <typename T>
+	void copy_raw_list(T* dest, T* source, size_t size_) {
+		/*
+			copy the content of source into dest. Only size_ element are copied.
+			Dest must be at least sizeof(T)*size_ big. Otherwise, undefined behavior
+		*/
+		for (size_t i = 0; i < size_; i++) {
+			dest[i] = source[i];
+		}
+	}
+
+	template <typename T>
 	inline void check_null_pointer(T* ptr) {
 		if (ptr == nullptr) {
 			throw ustd::null_pointer_exception;

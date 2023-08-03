@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\ostream.hpp" />
+    <ClCompile Include="include\vector.hpp" />
     <ClCompile Include="test\assertion.hpp" />
     <ClCompile Include="test\test.cpp" />
   </ItemGroup>
