@@ -2,6 +2,8 @@
 #include "assertion.hpp"
 #include "../include/vector.hpp"
 #include "../include/array.hpp";
+#include "../include/ostream.hpp"
+//#include "../include/istream.hpp"
 
 void memory_test() {
 	
@@ -63,12 +65,7 @@ int main() {
 	//string_test();
 
 	//array_test();
-	ustd::Vector<int> d;
-	d.push_back(250);
-	d.push_back(152);
-	d.push_front(100);
-	d.pop_front();
-	for (int i = 0; i < d.size(); i++) {
-		std::cout << d[i] << std::endl;
-	}
+	ustd::Ostream cout;
+	char a, b, c;
+	cin.input(a).input(b);
 }

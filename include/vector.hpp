@@ -64,6 +64,25 @@ namespace ustd {
 			_list.reallocate(new T[0]); // to avoid check_null_pointer exception
 		}
 		
+		bool is_equal_to(const ustd::Vector<T>& v) {
+			if (v._size != _size) {
+				return false;
+			}
+			for (size_t i = 0; i < _size; i++) {
+				if (v[i] != at(i)) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		bool operator==(const ustd::Vector<T>& v) {
+			return is_equal_to(v);
+		}
+
+		bool operator!=(const ustd::Vector<T>& v) {
+			return !is_equal_to(v);
+		}
 
 		T& at(index i) {
 			if (i > _size - 1) {

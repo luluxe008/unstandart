@@ -4,16 +4,19 @@
 #include <cstdio>
 
 namespace ustd {
-	enum struct OstreamIndicator{
-		endl,
-		flush,
-		newl
-	};
-	class Ostream {
 
+	enum class OstreamIndicator{
+		endl,
+		newl,
+		flush
+	};
+	using OI = OstreamIndicator;
+
+	class Ostream {
+		
 	public:
 		FILE* output;
-
+		
 		Ostream(FILE* file) : output(file) {
 
 		}
@@ -30,6 +33,7 @@ namespace ustd {
 			fprintf(output, "%c", c);
 			return *this;
 		}
+		
 		ustd::Ostream& operator<<(OstreamIndicator i) {
 			switch (i) {
 			case OstreamIndicator::endl:
@@ -47,6 +51,7 @@ namespace ustd {
 			}
 			return *this;
 		}
+		
 
 		ustd::Ostream& operator<<(bool b) {
 			if (b) fprintf(output, "true");
@@ -79,6 +84,8 @@ namespace ustd {
 			return *this;
 		}
 	};
+
 }
+
 
 #endif // !#define __USTD_OSTREAM_H__

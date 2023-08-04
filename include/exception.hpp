@@ -13,8 +13,6 @@ namespace ustd {
 	};
 	extern AllocationFailed allocation_failed_exception;
 
-	extern AllocationFailed allocation_failed_exception;
-
 	class NullPointerReference : public Exception {
 
 	} ;
@@ -34,6 +32,11 @@ namespace ustd {
 
 	} ;
 	extern Assert assert_exception;
+
+	class Convert : public Exception {
+
+	};
+	extern Convert convert_exception;
 
 };
 

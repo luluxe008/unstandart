@@ -33,6 +33,20 @@ namespace ustd {
 		T& operator[](index i) {
 			return at(i);
 		}
+
+		bool is_equal_to(const ustd::Array<T, Size>& a) {
+			for (size_t i = 0; i < Size; i++) {
+				if (a[i] != at(i)) return false;
+			}
+			return true;
+		}
+
+		bool operator==(const ustd::Array<T, Size>& a) {
+			return is_equal_to(a);
+		}
+		bool operator!=(const ustd::Array<T, Size>& a) {
+			return !is_equal_to(a);
+		}
 	};
 }
 

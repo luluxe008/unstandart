@@ -155,10 +155,12 @@
     <ClInclude Include="include\exception.hpp" />
     <ClInclude Include="include\memory.hpp" />
     <ClInclude Include="include\string.hpp" />
+    <ClInclude Include="include\string_cin.hpp" />
     <ClInclude Include="include\string_cout.hpp" />
     <ClInclude Include="test\assertion.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\istream.hpp" />
     <ClCompile Include="include\ostream.hpp" />
     <ClCompile Include="include\vector.hpp" />
     <ClCompile Include="test\assertion.hpp" />

@@ -13,7 +13,7 @@ namespace ustd {
 	typedef unsigned long long int index;
 
 	
-	class BasicString {
+	class BasicString { // I called it BasicString because why not (in reality there migth be other string with another type than char)
 	public:
 		// THE LAST CHARACTER IS ALWAYS \0
 
@@ -36,7 +36,7 @@ namespace ustd {
 
 			size = strlen(s);
 
-			char* tmp = new char[size + 1] {0}; //size+1 pour le \0
+			char* tmp = new char[size + 1] {0}; //size+1 for the \0
 			strcpy(tmp, s);
 			_str.reallocate((char*)tmp);
 		}
@@ -62,6 +62,17 @@ namespace ustd {
 			_str.reallocate(tmp);
 		}
 
+		void append(const BasicString& s) {
+			append(s.c_str());
+		}
+
+		void operator+=(const char* s) {
+			append(s);
+		}
+
+		void operator+=(const BasicString& s) {
+			append(s);
+		}
 		
 		BasicString slice(index a, index b) const{
 			if (b < a) {
@@ -126,6 +137,49 @@ namespace ustd {
 	bool operator!=(BasicString a, BasicString b) {
 		return !(a == b);
 	}
+
+	ustd::BasicString operator+(const ustd::BasicString& a, const ustd::BasicString & b) {
+		ustd::BasicString c(a);
+		c.append(b);
+		return c;
+	}
+
+	long long int str_to_lli(const char* s, bool plus_sign=true) {
+		/*
+		parse the s string to an long long int
+		If plus_sign then if s[0] == '+' no error otherwise error
+		*/
+		short sign = 1;
+		long long int res = 0;
+		size_t i = 1;
+
+		if (s[0] == '-') {
+			sign = -1;
+			i++;
+		}
+		else if (plus_sign && s[0] == '+') {
+			i++; // no need to change sign because it's already positive
+		}
+		
+		while (s[i] != '\0') {
+			if (s[i] >= '0' && s[i] <= '9') {
+				res = res * 10 + (s[i] - '0');
+			}
+			else {
+				throw convert_exception;
+			}
+			i++;
+		}
+
+		return res * sign;
+
+	}
+
+	long long int str_to_lli(const BasicString& s) {
+		return str_to_lli(s.c_str());
+	}
+
 };
+
 
 #endif // !__USTD_STRING_H__
