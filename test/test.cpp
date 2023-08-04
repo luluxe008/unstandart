@@ -1,9 +1,8 @@
 #include "../include/memory.hpp"
 #include "assertion.hpp"
-#include "../include/vector.hpp"
-#include "../include/array.hpp";
-#include "../include/ostream.hpp"
-//#include "../include/istream.hpp"
+#include "../include/string.hpp"
+#include "../include/string_cin.hpp"
+#include "../include/istream.hpp"
 
 void memory_test() {
 	
@@ -65,7 +64,7 @@ int main() {
 	//string_test();
 
 	//array_test();
-	ustd::Ostream cout;
-	char a, b, c;
-	
+	ustd::Istream cin;
+	ustd::String s;
+	cin >> s;
 }

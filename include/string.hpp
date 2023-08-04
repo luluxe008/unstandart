@@ -27,7 +27,7 @@ namespace ustd {
 	public:
 		BasicString() {
 			size = 0;
-			// _str initialize itself automatically
+			_str.reallocate(new char[1]{0}); // else there can be a null pointer reading
 		}
 
 		BasicString(const char* s) {
@@ -66,12 +66,25 @@ namespace ustd {
 			append(s.c_str());
 		}
 
+		void append(const char& c) {
+			
+			char* tmp = new char[size+1] {0};
+			strcpy(tmp, _str.get_ptr());
+			tmp[size] = c;
+			_str.reallocate(tmp);
+			size++;
+		}
+
 		void operator+=(const char* s) {
 			append(s);
 		}
 
 		void operator+=(const BasicString& s) {
 			append(s);
+		}
+
+		void operator+=(const BasicString& c) {
+			append(c);
 		}
 		
 		BasicString slice(index a, index b) const{
@@ -138,9 +151,22 @@ namespace ustd {
 		return !(a == b);
 	}
 
+	bool operator==(BasicString a, const char* s) {
+		return strcmp(a.c_str(), s) == 0;
+	}
+	bool operator!=(BasicString a, const char* s) {
+		return !(a == s);
+	}
+
 	ustd::BasicString operator+(const ustd::BasicString& a, const ustd::BasicString & b) {
 		ustd::BasicString c(a);
 		c.append(b);
+		return c;
+	}
+
+	ustd::BasicString operator+(const ustd::BasicString& a, const char* s) {
+		ustd::BasicString c(a);
+		c.append(s);
 		return c;
 	}
 

@@ -24,6 +24,9 @@ namespace ustd {
 		Ostream() : output(stdout) {
 
 		}
+		Ostream(const Ostream& o) {
+			output = o.output;
+		}
 
 		ustd::Ostream& operator<<(const char* s) {
 			fprintf(output, "%s", s);
