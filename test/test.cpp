@@ -67,5 +67,5 @@ int main() {
 	//array_test();
 	ustd::Ostream cout;
 	char a, b, c;
-	cin.input(a).input(b);
+	
 }
